@@ -1,0 +1,16 @@
+{
+  "keyMappings": {
+    "up": "num8",
+    "down": "num2",
+    "left": "num4",
+    "right": "num6",
+    "zoomIn": "numadd",
+    "zoomOut": "numsub",
+    "changeMap": "numdiv",
+    "checkboxUp": "num7",
+    "checkboxDown": "num1",
+    "checkboxSelect": "num9"
+  },
+  "panSpeed": 2,
+  "zoomSpeed": 0.5
+}

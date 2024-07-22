@@ -1,0 +1,25 @@
+{
+  "name": "eldenringmapv2",
+  "version": "1.0.0",
+  "description": "New version of Elden-Ring-Map, using Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0000day/eldenringmapv2.git"
+  },
+  "author": "_0day",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0000day/eldenringmapv2/issues"
+  },
+  "homepage": "https://github.com/0000day/eldenringmapv2#readme",
+  "devDependencies": {
+    "electron": "^31.2.1"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
+  }
+}
