@@ -4,7 +4,9 @@
   "description": "New version of Elden-Ring-Map, using Electron",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder",
+    "package-win": "electron-packager . EldenRingMapV2 --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/icons/icon128.ico"
   },
   "repository": {
     "type": "git",
@@ -17,9 +19,27 @@
   },
   "homepage": "https://github.com/0000day/eldenringmapv2#readme",
   "devDependencies": {
-    "electron": "^31.2.1"
+    "electron": "^31.2.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2"
   },
   "dependencies": {
     "electron-window-state": "^5.0.3"
+  },
+  "build": {
+    "appId": "com.yourapp.id",
+    "win": {
+      "icon": "assets/icons/icon256.png"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "config.json",
+      "assets/icons/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }

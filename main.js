@@ -1,6 +1,7 @@
-const { app, BrowserWindow, screen, globalShortcut } = require('electron');
+const { app, BrowserWindow, Menu, globalShortcut } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const fs = require('fs');
+const path = require('path');
 
 let config;
 let mainWindow;
@@ -23,6 +24,7 @@ function createWindow () {
     height: mainWindowState.height,
     x: mainWindowState.x,
     y: mainWindowState.y,
+    icon: path.join(__dirname, './assets/icons/icon256.png'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -31,6 +33,7 @@ function createWindow () {
   });
 
   mainWindowState.manage(mainWindow);
+  Menu.setApplicationMenu(null);
 
   // Lade die gewünschte URL
   mainWindow.loadURL('https://eldenring.wiki.fextralife.com/Interactive+Map');
