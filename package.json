@@ -28,6 +28,7 @@
   },
   "build": {
     "appId": "com.yourapp.id",
+    "compression": "maximum",
     "win": {
       "icon": "assets/icons/icon256.png"
     },
