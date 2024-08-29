@@ -23,5 +23,9 @@ Compiled: `./resources/app/config.json`
  - Change numpad-lock state and try again
  - Click the map once and then go back to your game
 
+### Checkboxes hiding automatically
+ - This is a window-size issue. Open the app in full-screen, close it and open again. Should be gone.
+
+---  
 I don't actively plan to continue from this point on.  
 Maybe the two other maps will be implemented. Wanna do it yourself? Check `preload.js:158`.
