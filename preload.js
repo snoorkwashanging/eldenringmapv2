@@ -66,7 +66,7 @@ let handleCheckboxes = (action) => {
   // map inputs back to parent-divs
   const cbContainers = Array.from(cbInputs).map(x => x.closest("div"));
 
-  /* clear borders */
+  // clear borders
   if (["up", "down"].includes(action)) {
     cbContainers.forEach(cb => cb.style.border = "");
   }
@@ -172,12 +172,8 @@ let checkButtons = async () => {
 
 let activateIPCEvents = () => {
   ipcRenderer.on('key-event', (event, actionEvent) => {
-    console.log("POSTING MESSAGE: ", actionEvent);
-
-    debugger;
 
     let frame = iframes[activeButtonIdx];
-    let leaf = frame.contentWindow.L;
     let map = frame.contentWindow.map;
 
     let center = map.getCenter();

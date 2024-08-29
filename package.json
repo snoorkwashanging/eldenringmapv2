@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "package-win": "electron-packager . EldenRingMapV2 --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/icons/icon128.ico"
+    "package-win": "electron-packager . EldenRingMapV2 --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/icons/icon128.ico --prune=true"
   },
   "repository": {
     "type": "git",

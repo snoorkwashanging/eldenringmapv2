@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, globalShortcut } = require('electron');
+const { app, BrowserWindow, Menu, globalShortcut, dialog } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const fs = require('fs');
 const path = require('path');
@@ -6,16 +6,22 @@ const path = require('path');
 let config;
 let mainWindow;
 
-// Funktion zum Laden der Konfigurationsdatei
-function loadConfig() {
-  const data = fs.readFileSync('config.json');
-  config = JSON.parse(data);
+function loadConfig() {  
+  const configPath = path.join(app.getAppPath(), "config.json");
+
+  try {
+    const data = fs.readFileSync(configPath, "utf8");
+    config = JSON.parse(data);
+  } catch {
+    dialog.showMessageBoxSync(mainWindow, { message: `Failed to find config in: ${configPath}` });
+    app.exit(0);
+  }
 }
 
 function createWindow () {
   let mainWindowState = windowStateKeeper({
-    defaultHeight: 800,
-    defaultWidth: 800,
+    defaultHeight: 1000,
+    defaultWidth: 1000,
     path: ".\\"
   });
 
@@ -35,10 +41,7 @@ function createWindow () {
   mainWindowState.manage(mainWindow);
   Menu.setApplicationMenu(null);
 
-  // Lade die gewünschte URL
   mainWindow.loadURL('https://eldenring.wiki.fextralife.com/Interactive+Map');
-
-  // Registriere globale Tastaturkürzel
   registerGlobalShortcuts(mainWindow);
 }
 
@@ -63,20 +66,17 @@ app.on('ready', () => {
 });
 
 app.on('window-all-closed', () => {
-  // Beende die App, wenn alle Fenster geschlossen sind
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
 app.on('activate', () => {
-  // Erstelle ein neues Fenster, wenn die App aktiviert wird und keine Fenster geöffnet sind
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
 });
 
 app.on('will-quit', () => {
-  // Deregistriere alle globalen Tastaturkürzel
   globalShortcut.unregisterAll();
 });
